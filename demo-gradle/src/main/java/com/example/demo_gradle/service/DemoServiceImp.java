@@ -4,6 +4,8 @@ import com.example.demo_gradle.dto.DemoDTO;
 import com.example.demo_gradle.entity.DemoEntity;
 import com.example.demo_gradle.repository.DemoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -41,6 +43,13 @@ public class DemoServiceImp implements DemoService {
     @Override
     public void deleteById(int id) {
         demoRepository.deleteById(Long.valueOf(id));
+    }
+
+    @Override
+    public Page<DemoEntity> findAll(Pageable pageable) {
+        Page<DemoEntity> ref=  demoRepository.findAll(pageable);
+        System.out.println(ref.toString());
+        return ref;
     }
 
 }
