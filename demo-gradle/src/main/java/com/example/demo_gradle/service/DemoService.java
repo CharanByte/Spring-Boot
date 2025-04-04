@@ -5,6 +5,7 @@ import com.example.demo_gradle.entity.DemoEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface DemoService {
@@ -19,4 +20,6 @@ public interface DemoService {
     void deleteById(int id);
 
     Page<DemoEntity> findAll(Pageable pageable);
+
+    List<String> getAll();
 }

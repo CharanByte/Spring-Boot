@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface DemoRepository extends JpaRepository<DemoEntity,Long> {
 
@@ -15,4 +17,7 @@ public interface DemoRepository extends JpaRepository<DemoEntity,Long> {
     @Transactional
     @Query("update DemoEntity a set a.name=:name,a.age=:age,a.gender=:gender where a.id=:id")
     int updateById(int id, String name, int age, String gender);
+
+    @Query("select a.name from DemoEntity a")
+    List<String> getAll();
 }

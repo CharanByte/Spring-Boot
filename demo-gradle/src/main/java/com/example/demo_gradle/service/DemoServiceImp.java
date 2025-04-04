@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -50,6 +51,11 @@ public class DemoServiceImp implements DemoService {
         Page<DemoEntity> ref=  demoRepository.findAll(pageable);
         System.out.println(ref.toString());
         return ref;
+    }
+
+    @Override
+    public List<String> getAll() {
+        return demoRepository.getAll();
     }
 
 }
